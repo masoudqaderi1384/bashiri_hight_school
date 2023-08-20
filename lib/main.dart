@@ -1,10 +1,10 @@
 import 'dart:io';
 
-import 'package:camarate_school_library/Models/view_models/conetividade.dart';
-import 'package:camarate_school_library/screens/menu_lateral/menu_lateral.dart';
-import 'package:camarate_school_library/screens/splash_screen.dart';
-import 'package:camarate_school_library/services/auth_services.dart';
-import 'package:camarate_school_library/models/view_models/livro_requisitado_view_model.dart';
+import 'package:bashiri_hight_school/Models/view_models/conetividade.dart';
+import 'package:bashiri_hight_school/screens/menu_lateral/menu_lateral.dart';
+import 'package:bashiri_hight_school/screens/splash_screen.dart';
+import 'package:bashiri_hight_school/services/auth_services.dart';
+import 'package:bashiri_hight_school/models/view_models/livro_requisitado_view_model.dart';
 
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/cupertino.dart';
