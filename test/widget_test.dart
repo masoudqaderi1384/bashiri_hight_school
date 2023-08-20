@@ -13,7 +13,7 @@ import 'package:bashiri_hight_school/main.dart';
 void main() {
   testWidgets('Counter increments smoke test', (WidgetTester tester) async {
     // Build our app and trigger a frame.
-    await tester.pumpWidget(SplashScreenApp());
+    await tester.pumpWidget(BashiriSchoolLibraryApp());
 
     // Verify that our counter starts at 0.
     expect(find.text('0'), findsOneWidget);
