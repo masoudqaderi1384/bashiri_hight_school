@@ -11,7 +11,6 @@ import 'package:intl/intl.dart';
 
 import '../../../models/livro.dart';
 import '../../../models/view_models/livro_requisitado_view_model.dart';
-import '../../detalhes_do_livro/livro_detalhado.dart';
 
 FirebaseDatabase refDB = FirebaseDatabase.instance;
 
