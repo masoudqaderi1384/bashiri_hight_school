@@ -1,67 +1,48 @@
 import 'dart:async';
 
-import 'package:bashiri_hight_school/screens/login.dart';
+import 'package:bashiri_hight_school/Screens/login_Screen.dart';
 import 'package:flutter/material.dart';
 
-class _IniciarAppState extends State<IniciarApp> {
+class Splash_Screen extends StatefulWidget {
+
+  @override
+  SplashScreenState createState() => SplashScreenState();
+}
+
+class SplashScreenState extends State<Splash_Screen> {
   @override
   void initState() {
-    Timer(Duration(seconds: 3), () {
-      Navigator.push(
-        context,
-        MaterialPageRoute(
-          builder: (context) => const LoginScreen(),
-        ),
-      );
-    });
     super.initState();
+    Timer(
+        Duration(seconds: 1),
+            () => Navigator.pushReplacement(
+            context, MaterialPageRoute(builder: (context) => LoginPage())));
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      resizeToAvoidBottomInset: false,
-      body: SizedBox(
-        width: double.infinity,
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            SizedBox(height: 120),
-            Image.asset(
-              'assets/logotipo/ic_launcher_adaptive_fore.png',
-              width: 150,
-            ),
-            SizedBox(height: 180),
-            Text(
-              'from',
-              style:
-                  TextStyle(fontFamily: 'Carmen', color: Colors.grey.shade700),
-            ),
-            SizedBox(height: 5.5),
-
-            // Logo da entidade externa
-            Image.asset('assets/logotipo/logo_entidade.png', width: 25),
-            SizedBox(height: 5.5),
-            Text(
-              'Escola Secundária de Camarate',
-              style: TextStyle(
-                fontSize: 13,
-                fontFamily: 'Carmen',
-                fontWeight: FontWeight.bold,
-                color: Color(0xff4285F4),
-              ),
-              textAlign: TextAlign.center,
-            ),
-          ],
+      backgroundColor: Color(0xff990000),
+      body: Center(
+        child: LayoutBuilder(
+          builder: (context, constraints) {
+            double imageSize;
+            if (constraints.maxWidth >= 1200) {
+              imageSize = 200.0; // Adjust the size for desktop devices
+            } else if (constraints.maxWidth >= 600) {
+              imageSize = 150.0; // Adjust the size for tablet devices
+            } else {
+              imageSize = 100.0; // Adjust the size for mobile devices
+            }
+            return Image.asset(
+              'assets/images/LogoWhite.png',
+              color: Colors.white,
+              width: imageSize,
+              height: imageSize,
+            );
+          },
         ),
       ),
     );
   }
-}
-
-class IniciarApp extends StatefulWidget {
-  const IniciarApp({Key? key}) : super(key: key);
-
-  @override
-  State<IniciarApp> createState() => _IniciarAppState();
 }

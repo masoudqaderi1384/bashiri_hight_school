@@ -3,9 +3,8 @@
 #
 
 list(APPEND FLUTTER_PLUGIN_LIST
-  connectivity_plus_windows
-  file_selector_windows
-  url_launcher_windows
+  firebase_auth
+  firebase_core
 )
 
 list(APPEND FLUTTER_FFI_PLUGIN_LIST
