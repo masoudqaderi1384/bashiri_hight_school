@@ -1,4 +1,5 @@
- import 'package:bashiri_hight_school/main.dart';
+ import 'package:bashiri_hight_school/Screens/HomePage.dart';
+import 'package:bashiri_hight_school/main.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'LoginOrRegisterPage.dart';
@@ -14,7 +15,7 @@ class AuthPage extends StatelessWidget {
         builder: (context, snapshot) {
           // user is logged in
           if (snapshot.hasData) {
-            return HomeScreen();
+            return HomePage();
           }
 
           // user is NOT logged in
@@ -26,3 +27,4 @@ class AuthPage extends StatelessWidget {
     );
   }
 }
+// https://docs.google.com/spreadsheets/d/1E28_9oUDbU3dxxAhmY5Bnf9xNAE9DjbkN7o90sda3co/edit#gid=0

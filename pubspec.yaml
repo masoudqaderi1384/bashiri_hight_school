@@ -33,6 +33,9 @@ dependencies:
   cupertino_icons: ^1.0.5
   firebase_core: ^2.16.0
   firebase_auth: ^4.10.0
+  google_sign_in: ^6.1.5
+  firebase_database: ^10.2.7
+  cloud_firestore: ^4.9.3
 
 
 dev_dependencies:
@@ -73,10 +76,10 @@ flutter:
   # "family" key with the font family name, and a "fonts" key with a
   # list giving the asset and other descriptors for the font. For
   # example:
-  # fonts:
-  #  - family: Afghan
-  #   fonts:
-  #      - asset: fonts/bbc.ttf
+  fonts:
+    - family: Afghan
+      fonts:
+      - asset: assets/fonts/Quicksand-Regular.ttf
   #  - family: Com
   #   fonts:
   #      - asset: fonts/Comfortaa-Regular.ttf

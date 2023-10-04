@@ -1,6 +1,6 @@
 import 'dart:async';
 
-import 'package:bashiri_hight_school/Screens/login_Screen.dart';
+import 'package:bashiri_hight_school/Screens/auth_page.dart';
 import 'package:flutter/material.dart';
 
 class Splash_Screen extends StatefulWidget {
@@ -16,7 +16,7 @@ class SplashScreenState extends State<Splash_Screen> {
     Timer(
         Duration(seconds: 1),
             () => Navigator.pushReplacement(
-            context, MaterialPageRoute(builder: (context) => LoginPage())));
+            context, MaterialPageRoute(builder: (context) => AuthPage())));
   }
 
   @override

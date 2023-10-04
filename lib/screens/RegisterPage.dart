@@ -1,3 +1,5 @@
+import 'package:bashiri_hight_school/Screens/components/Forgot_Password.dart';
+import 'package:bashiri_hight_school/services/auth_services.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
@@ -33,13 +35,13 @@ class _RegisterPageState extends State<RegisterPage> {
       },
     );
     try {
-      if(passwordController.text == confirmPasswordController.text){
+      if (passwordController.text == confirmPasswordController.text) {
         await FirebaseAuth.instance.createUserWithEmailAndPassword(
           email: emailController.text,
           password: passwordController.text,
         );
-      }else{
-       wrongPasswordMessage();
+      } else {
+        wrongPasswordMessage();
       }
       // pop the loading circle
       Navigator.pop(context as BuildContext);
@@ -129,6 +131,7 @@ class _RegisterPageState extends State<RegisterPage> {
 
                 // username textfield
                 MyTextField(
+                  MyTextFieldIcon: Icons.alternate_email_rounded,
                   controller: emailController,
                   hintText: 'ایمیل',
                   obscureText: false,
@@ -138,6 +141,7 @@ class _RegisterPageState extends State<RegisterPage> {
 
                 // password textfield
                 MyTextField(
+                  MyTextFieldIcon: Icons.password_rounded,
                   controller: passwordController,
                   hintText: 'رمز عبور',
                   obscureText: true,
@@ -145,26 +149,16 @@ class _RegisterPageState extends State<RegisterPage> {
 
                 const SizedBox(height: 10),
                 MyTextField(
+                  MyTextFieldIcon: Icons.password_rounded,
                   controller: confirmPasswordController,
                   hintText: 'تکرار رمز عبور',
                   obscureText: true,
                 ),
 
-                const SizedBox(height: 10),
+                //const SizedBox(height: 10),
 
                 // forgot password?
-                Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 25.0),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.start,
-                    children: [
-                      Text(
-                        'رمز عبور را فراموش کرده اید؟',
-                        style: TextStyle(color: Colors.grey[600]),
-                      ),
-                    ],
-                  ),
-                ),
+                //ForgotPassword(),
 
                 const SizedBox(height: 25),
 
@@ -209,14 +203,17 @@ class _RegisterPageState extends State<RegisterPage> {
                 // google + apple sign in buttons
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
-                  children: const [
+                  children: [
                     // google button
-                    SquareTile(imagePath: 'assets/images/google.png'),
+                    SquareTile(
+                        onTap: () => AuthServices().signWithGoogle(),
+                        imagePath: 'assets/images/google.png'),
 
                     SizedBox(width: 25),
 
                     // apple button
-                    SquareTile(imagePath: 'assets/images/apple.png')
+                    SquareTile(
+                        onTap: () {}, imagePath: 'assets/images/apple.png')
                   ],
                 ),
 
