@@ -1,8 +1,10 @@
-import 'package:bashiri_hight_school/Screens/components/My_TextFilled.dart';
-import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:flutter/material.dart';
+import 'package:bashiri_hight_school/Screens/Aboutlibrary.dart';
+import 'package:bashiri_hight_school/Screens/BookManagement.dart';
+import 'package:bashiri_hight_school/Screens/BookView.dart';
+import 'package:bashiri_hight_school/Screens/MemberManage.dart';
+import 'package:bashiri_hight_school/Screens/MemberView.dart';
 
-import 'components/My_botton.dart';
+import 'package:flutter/material.dart';
 
 class HomePage extends StatefulWidget {
   HomePage({super.key});
@@ -12,21 +14,16 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-  TextEditingController idController = TextEditingController();
-  TextEditingController bookNameController = TextEditingController();
-  TextEditingController authorController = TextEditingController();
-  TextEditingController translatorController = TextEditingController();
-  TextEditingController publisherController = TextEditingController();
-  TextEditingController publicationDateController = TextEditingController();
-  TextEditingController pageCountController = TextEditingController();
-  TextEditingController quantityController = TextEditingController();
-  TextEditingController priceController = TextEditingController();
-
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-        backgroundColor: Color(0x1f990000),
-        appBar: AppBar(
+    return MaterialApp(
+      debugShowCheckedModeBanner: false,
+      home: DefaultTabController(
+        length: 3,
+        initialIndex: 2,
+        child: Scaffold(
+          backgroundColor: Color(0x1f990000),
+          appBar: AppBar(
             backgroundColor: Color(0xff990000),
             leading: IconButton(
               onPressed: () {},
@@ -36,149 +33,66 @@ class _HomePageState extends State<HomePage> {
             title: Text("نشر اصرار"),
             centerTitle: true,
             actions: [
-              IconButton(onPressed: () {}, icon: Icon(Icons.more_vert_rounded))
-            ]),
-        body: Column(
-          children: [
-            SizedBox(
-              height: 10,
-            ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                MyButton(onTap: () {}, bottomName: 'حذف'),
-                MyButton(onTap: () {}, bottomName: 'ویرایش'),
-                MyButton(
-                    onTap: () {
-                      showDialog(
-                          context: context,
-                          builder: (context) {
-                            return Dialog(
-                              child: SizedBox(
-                                height: 600,
-                                width: 320,
-                                child: SingleChildScrollView(
-                                  child: Column(
-                                    mainAxisAlignment: MainAxisAlignment.center,
-                                    crossAxisAlignment:
-                                        CrossAxisAlignment.center,
-                                    children: [
-                                      SizedBox(height: 10),
-                                      Text(
-                                        "فورم ثبت کتاب",
-                                        style: TextStyle(
-                                            color: Color(0xff990000),
-                                            fontSize: 16),
-                                      ),
-                                      SizedBox(height: 10),
-                                      MyTextField(
-                                        controller: idController,
-                                        hintText: "آی دی کتاب",
-                                        obscureText: false,
-                                        MyTextFieldIcon: Icons.numbers_rounded,
-                                      ),
-                                      SizedBox(height: 10),
-                                      MyTextField(
-                                        controller: bookNameController,
-                                        hintText: 'نام کتاب',
-                                        obscureText: false,
-                                        MyTextFieldIcon:
-                                            Icons.book_online_rounded,
-                                      ),
-                                      SizedBox(height: 10),
-                                      MyTextField(
-                                        controller: authorController,
-                                        hintText: "نویسنده",
-                                        obscureText: false,
-                                        MyTextFieldIcon: Icons.person,
-                                      ),
-                                      SizedBox(height: 10),
-                                      MyTextField(
-                                        controller: translatorController,
-                                        hintText: "مترجم",
-                                        obscureText: false,
-                                        MyTextFieldIcon: Icons.person,
-                                      ),
-                                      SizedBox(height: 10),
-                                      MyTextField(
-                                        controller: publisherController,
-                                        hintText: "ناشر",
-                                        obscureText: false,
-                                        MyTextFieldIcon:
-                                            Icons.home_work_rounded,
-                                      ),
-                                      SizedBox(height: 10),
-                                      MyTextField(
-                                        controller: publicationDateController,
-                                        hintText: "تاریخ انتشار",
-                                        obscureText: false,
-                                        MyTextFieldIcon:
-                                            Icons.date_range_rounded,
-                                      ),
-                                      SizedBox(height: 10),
-                                      MyTextField(
-                                        controller: pageCountController,
-                                        hintText: "تعداد صفحه",
-                                        obscureText: false,
-                                        MyTextFieldIcon: Icons.pages_rounded,
-                                      ),
-                                      SizedBox(height: 10),
-                                      MyTextField(
-                                        controller: quantityController,
-                                        hintText: "تعداد",
-                                        obscureText: false,
-                                        MyTextFieldIcon: Icons.numbers_rounded,
-                                      ),
-                                      SizedBox(height: 10),
-                                      MyTextField(
-                                        controller: priceController,
-                                        hintText: "قیمت",
-                                        obscureText: false,
-                                        MyTextFieldIcon:
-                                            Icons.price_change_rounded,
-                                      ),
-                                      SizedBox(height: 10),
-                                      ElevatedButton(
-                                        onPressed: () {
-                                          Map <String, dynamic> data = {
-                                            'ID': idController.text,
-                                            'BookName': bookNameController.text,
-                                            'BookWriter': authorController.text,
-                                            'BookTranslate': translatorController.text,
-                                            'Nasher': publisherController.text,
-                                            'Number': quantityController.text,
-                                            'Price': priceController.text,
-                                            'PublishDate': publicationDateController.text,
-                                            'PageNum': pageCountController.text,
-                                          };
-                                            CollectionReference collRef = FirebaseFirestore.instance.collection("BookManagement");
-                                            collRef.add(data);
-
-                                        },
-                                        child: Text(
-                                          "ثبت",
-                                          style: TextStyle(color: Color(0xff990000)),
-                                        ),
-                                      ),
-                                      SizedBox(height: 10),
-                                    ],
-                                  ),
-                                ),
-                              ),
-                            );
-                          });
-                    },
-                    bottomName: 'ذخیره'),
+              IconButton(
+                onPressed: () {
+                  showDialog(
+                      context: context,
+                      builder: (context) {
+                        return SaveMember();
+                      });
+                },
+                icon: Icon(Icons.person_add_alt_1_sharp),
+              ),
+              IconButton(
+                onPressed: () {
+                  showDialog(
+                      context: context,
+                      builder: (context) {
+                        return SaveBook();
+                      });
+                },
+                icon: Icon(Icons.book),
+              ),
+            ],
+            bottom: TabBar(
+              tabs: [
+                Tab(
+                  icon: Icon(Icons.person_pin_rounded, color: Color(0xffffffff)),
+                ),
+                Tab(
+                  icon: Icon(Icons.menu_book_outlined, color: Color(0xffffffff)),
+                ),
+                Tab(
+                  icon:
+                      Icon(Icons.book_online_rounded, color: Color(0xffffffff)),
+                ),
               ],
-            )
-          ],
-        ));
+            ),
+          ),
+          body: TabBarView(
+            children: [
+              //3rd Tab
+              MemberListPage(),
+              //4th
+              BookListPage(),
+              //5th
+              LibraryIntro(),
+            ],
+          ),
+        ),
+      ),
+    );
   }
 }
-//TODO: MVoLn2eZLQCh0I3eiBFJ
 
 /*
-*  Container(
+
+* */
+//TODO: MVoLn2eZLQCh0I3eiBFJ
+//Todo: member TDaPqQ0nBGfzGt3dqewo
+
+/*
+  Container(
         color: Colors.white,
         child: ListView.builder(
           //itemCount: Myimage.length,
@@ -214,16 +128,6 @@ class _HomePageState extends State<HomePage> {
                 Navigator.push(
                   context,
                   MaterialPageRoute(
-                      builder: (context) => SecondPage(
-                        universityName: Mylist[i],
-                        universityImage: Myimage[i],
-                        universitySubtitle: Mysubtitle[i],
-                        universityTitle: MyTitle[i],
-                      )),
-                );
-              },
-            );
-          },
-        ),
-      ),
-* */
+
+
+ */

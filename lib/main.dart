@@ -1,4 +1,3 @@
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'Screens/Splash_Screen.dart';
 import 'package:firebase_core/firebase_core.dart';
@@ -19,6 +18,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       home: Splash_Screen(),
+      theme: ThemeData(primarySwatch:Colors.grey),
     );
   }
 }
